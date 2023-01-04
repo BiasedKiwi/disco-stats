@@ -1,0 +1,9 @@
+logging:
+  - debug_logs: false  # Show verbose logging
+debug:
+  debug_cogs: ["debug"]  # Module name of debug cogs
+  load_debug_cogs: true
+postgresql:
+  postgres_host: "192.168.1.2"  # EDIT THIS
+  postgres_port: 5432
+  postgres_db: "mark_devel"
