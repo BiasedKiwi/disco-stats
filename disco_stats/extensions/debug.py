@@ -1,10 +1,11 @@
-# pylint: disable=protected-access
+# pylint: disable=protected-access,missing-function-docstring,missing-class-docstring
 """A collection of debug commands. These shouldn't be enabled in production environments.
 They can be disabled by setting the 'debug_comands' key in /barnacle/config/config.yaml."""
+import logging
+
 import discord
 from discord import app_commands
 from discord.ext import commands
-import logging
 
 
 class DebugCmds(commands.Cog):
