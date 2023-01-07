@@ -97,6 +97,7 @@ if __name__ == "__main__":
         case_insensitive=True,
         enable_debug_events=_logger[1],
         ignore_cogs=get_ignored_cogs(),
+        activity=discord.Game(name="Counting messages...")
     )  # Initialise a bot instance
 
     _logger[0].info("Welcome to Disco Stats")
