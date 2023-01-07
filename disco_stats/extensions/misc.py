@@ -1,4 +1,4 @@
-# pylint: disable=unused-import,missing-function-docstring,line-too-long
+# pylint: disable=unused-import,missing-function-docstring,line-too-long,no-member
 import logging
 import random
 
