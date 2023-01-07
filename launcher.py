@@ -16,6 +16,7 @@ from rich.traceback import install
 import disco_stats
 from disco_stats import Bot
 
+# Setup rich console
 install(show_locals=True, suppress=[discord, asyncpg])
 console = Console()
 console.rule("[yellow bold]LOADING", characters="=")
@@ -56,7 +57,7 @@ def setup_logger():
 def get_token():
     load_dotenv()  # Load the .env file
     token = os.environ.get("DISCO_TOKEN")
-    if token is None:  # If the token was not found in the .env file, exit the program
+    if token is None:
         print(
             "Please provide a valid Discord API token. You can set an environment variable 'DISCO_TOKEN' to allow Disco Stats to access the token."
         )
@@ -71,8 +72,7 @@ def get_token():
 def get_ignored_cogs():
     if not raw_conf["debug"]["load_debug_cogs"]:
         return raw_conf["debug"]["debug_cogs"]
-    else:
-        return []
+    return []
 
 
 intents = discord.Intents.default()
