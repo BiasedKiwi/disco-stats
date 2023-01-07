@@ -85,9 +85,8 @@ async def gather(
     dataframe = pd.DataFrame(data=fmt_data)
     return dataframe
 
-async def gather_all(
-    guild: discord.Guild, days: Optional[int] = None
-):
+
+async def gather_all(guild: discord.Guild, days: Optional[int] = None):
     """Same thing as `gather()` but for all channels in a guild.
 
     Parameters
