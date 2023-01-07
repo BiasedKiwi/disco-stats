@@ -29,8 +29,9 @@ class Bot(commands.AutoShardedBot):
         # Code here run after the bot has logged in, but before it has connected to the Websocket.
         await self.load_cogs(client_obj=self, ignore=self.ignore_cogs)
 
+    @staticmethod
     async def load_cogs(
-        self, client_obj: commands.AutoShardedBot, ignore: Optional[List] = None
+        client_obj: commands.AutoShardedBot, ignore: Optional[List] = None
     ) -> None:
         """Iterate through all cogs in a directory using `pkgutil.iter_modules` and load them.
 
