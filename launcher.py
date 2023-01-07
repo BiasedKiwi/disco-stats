@@ -86,6 +86,7 @@ def set_intents():
     intents.voice_states = True
     return intents
 
+
 if __name__ == "__main__":
     _logger = setup_logger()
 
