@@ -1,5 +1,6 @@
+# pylint: disable=reimported
 import datetime
-import time
+import datetime as dt
 from datetime import datetime
 from typing import List, Optional, Tuple
 
@@ -63,10 +64,7 @@ async def gather(
     """
     raw_data = {}
     msg_data = await get_message_n(
-        channel=channel,
-        after=datetime.fromtimestamp(
-            int(time.time()) - 86400 * days
-        ),  # Get the timestamp from exactly n days ago
+        channel=channel, after=dt.datetime.now() - dt.timedelta(days=days)
     )
     for msg in msg_data[1]:
         date_str = msg.created_at.strftime("%Y/%m/%d")
@@ -85,9 +83,8 @@ async def gather(
     dataframe = pd.DataFrame(data=fmt_data)
     return dataframe
 
-async def gather_all(
-    guild: discord.Guild, days: Optional[int] = None
-):
+
+async def gather_all(guild: discord.Guild, days: int):
     """Same thing as `gather()` but for all channels in a guild.
 
     Parameters
@@ -95,8 +92,8 @@ async def gather_all(
     guild : discord.TextChannel
         The guild to gather message statistics from.
 
-    days : int or None, defaults to None
-        The amount of days to look back. (Gets passed to `channel.history()`)
+    days : int
+        Cannot be None. The amount of days to look back. (Gets passed to `channel.history()`)
 
     Returns
     -------
@@ -106,11 +103,8 @@ async def gather_all(
     raw_data = {}
     for channel in guild.text_channels:
         msg_data = await get_message_n(
-            channel=channel,
-            after=datetime.fromtimestamp(
-                int(time.time()) - 86400 * days
-            ),  # Get the timestamp from exactly n days ago
-        )
+            channel=channel, after=dt.datetime.now() - dt.timedelta(days=days)
+        )  # Get the timestamp from exactly n days ago
         for msg in msg_data[1]:
             date_str = msg.created_at.strftime("%Y/%m/%d")
             if date_str in raw_data:
@@ -126,4 +120,4 @@ async def gather_all(
         fmt_data["count"].append(value)
 
     dataframe = pd.DataFrame(data=fmt_data)
-    return dataframe
+    return dataframe.sort_values(by="date")
