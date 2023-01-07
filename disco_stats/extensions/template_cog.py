@@ -1,8 +1,9 @@
-# pylint: disable=unused-import
+# pylint: disable=unused-import,missing-function-docstring
+import logging
+
 import discord
 from discord import app_commands
 from discord.ext import commands
-import logging
 
 
 class TemplateCog(commands.Cog):
