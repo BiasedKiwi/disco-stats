@@ -61,6 +61,7 @@ def get_token():
         print(
             "Please provide a valid Discord API token. You can set an environment variable 'DISCO_TOKEN' to allow Disco Stats to access the token."
         )
+        # skipcq: PTC-W0047
         while (
             True
         ):  # If the program was executed from a binary, keep the terminal window alive.
