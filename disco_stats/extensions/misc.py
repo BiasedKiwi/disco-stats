@@ -35,9 +35,14 @@ class Misc(commands.Cog):
 
     @tasks.loop(minutes=5)
     async def change_presence(self):
-        all_presence = [discord.Game(name="Counting messages..."), discord.Activity(type=discord.ActivityType.watching, name="Server stats...")]
+        all_presence = [
+            discord.Game(name="Counting messages..."),
+            discord.Activity(
+                type=discord.ActivityType.watching, name="Server stats..."
+            ),
+        ]
         await self.bot.change_presence(activity=random.choice(all_presence))
-        
+
     @change_presence.before_loop
     async def before_change_presence(self):
         await self.bot.wait_until_ready()
