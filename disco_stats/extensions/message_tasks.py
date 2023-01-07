@@ -10,7 +10,7 @@ from ..utils import messages
 
 
 class MessageEvents(commands.Cog):
-    """basically a template cog"""
+    """Message Events"""
 
     def __init__(self, bot):
         self.bot = bot
