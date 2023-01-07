@@ -17,7 +17,6 @@ class MessageEvents(commands.Cog):
         self.logger = logging.getLogger("discord")
         self.get_bulk_msg_stats.start()  # pylint: disable=no-member
 
-
     async def cog_load(self):
         self.logger.info("%s module loaded", __name__)
 
